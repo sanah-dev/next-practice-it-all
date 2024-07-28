@@ -1,5 +1,5 @@
 import BookInfo, { getInfo } from '../../../components/bookInfo';
-import commonStyles from '../../styles/common.module.css';
+import commonStyles from '../../../styles/common.module.css';
 
 interface IParams {
   params: { list_name_encoded: string };
