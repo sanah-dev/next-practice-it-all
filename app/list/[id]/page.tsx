@@ -3,8 +3,22 @@ import { API_BOOK_INFO } from '../../../utils/api';
 import styles from '../../../styles/book.module.css';
 import commonStyles from '../../../styles/common.module.css';
 
+interface IList {
+  results: {
+    list_name: string;
+    books: [];
+  };
+}
+
+interface IBook {
+  title: string;
+  author: string;
+  book_image: string;
+  amazon_product_url: string;
+}
+
 export async function generateMetadata({ params: { id } }) {
-  const book = await getBook(id);
+  const book: IList = await getBook(id);
   return {
     title: book.results.list_name,
   };
@@ -22,7 +36,7 @@ export default async function List({ params: { id } }) {
     <div className={commonStyles.container}>
       <h1 className={commonStyles.title}>{book.results.list_name} Books</h1>
       <ul className={styles.list}>
-        {book.results.books.map((book, i) => (
+        {book.results.books.map((book: IBook, i) => (
           <li key={i} className={styles.item}>
             <img src={book.book_image} alt={book.title} />
             <div className={styles.textBox}>

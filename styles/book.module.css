@@ -28,7 +28,6 @@
 }
 
 .title {
-  display: block;
   font-size: 20px;
   word-break: break-all;
   /* 말줄임 */
