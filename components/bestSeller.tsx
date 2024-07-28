@@ -13,7 +13,7 @@ export default function BestSeller({
   return (
     <>
       <li className={styles.item}>
-        <Link href={`/list/${list_name_encoded}`}>{display_name} ➡️ </Link>
+        <Link href={`/list/${list_name_encoded}`}>{display_name} &rarr; </Link>
       </li>
     </>
   );
