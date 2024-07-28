@@ -1,0 +1,37 @@
+.nav {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid lightslategray;
+  background-color: rgb(240, 255, 255);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.nav ul li {
+  list-style: none;
+  transform: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.nav ul li:hover {
+  transform: scale(1.05);
+}
+
+.nav ul li a {
+  color: darkslategrey;
+  font-weight: 700;
+}
+
+.nav ul li a.active {
+  border-bottom: 2px solid darkslategrey;
+}
