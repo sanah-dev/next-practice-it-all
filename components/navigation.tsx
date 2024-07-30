@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import styles from '../styles/navigation.module.scss';
+import Link from 'next/link';
+import styles from './Navigation.module.scss';
 
-export default function Navigation() {
+// * Navigation 컴포넌트 정의
+const Navigation = () => {
   const path = usePathname();
   return (
     <nav className={styles.nav}>
@@ -25,4 +26,6 @@ export default function Navigation() {
       </ul>
     </nav>
   );
-}
+};
+
+export default Navigation;

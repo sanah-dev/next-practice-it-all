@@ -1,6 +1,6 @@
 'use client';
 
-import commonStyles from '../styles/common.module.scss';
+import commonStyles from '@/styles/common.module.scss';
 
 export default function Error() {
   return (

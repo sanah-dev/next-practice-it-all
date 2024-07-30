@@ -1,64 +1,50 @@
-import Link from 'next/link';
-import { API_BOOK_INFO } from '../../../utils/api';
-import styles from '../../../styles/list.module.scss';
-import commonStyles from '../../../styles/common.module.scss';
+import { API_BOOK_INFO } from '@/utils/api';
+import commonStyles from '@/styles/Common.module.scss';
 import { Metadata } from 'next';
+import BookItem, { IBook } from '@/components/BookItem';
+import BookStyles from '@/components/BookItem.module.scss';
 
-interface IList {
+// * 인터페이스 정의
+export interface IBookList {
   results: {
     list_name: string;
     books: IBook[];
   };
 }
 
-export interface IBook {
-  title: string;
-  author: string;
-  book_image: string;
-  amazon_product_url: string;
-}
-
+// * 메타데이터 생성 함수
 export async function generateMetadata({
   params,
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  const book = await getBook(params.id);
+  const bookList = await fetchBookList(params.id);
   return {
-    title: book.results.list_name,
+    title: bookList.results.list_name,
   };
 }
 
-async function getBook(id: string): Promise<IList> {
+// * API 호출: 책 리스트 정보 가져오기
+async function fetchBookList(id: string): Promise<IBookList> {
   const response = await fetch(`${API_BOOK_INFO}${id}`);
-  const json = await response.json();
-  return json;
+  if (!response.ok) {
+    throw new Error(`Failed to fetch book list for ID: ${id}`);
+  }
+  return response.json();
 }
 
-const ListPage = async ({ params }: { params: { id: string } }) => {
-  const book = await getBook(params.id);
+// * ListPage 컴포넌트 정의
+export default async function ListPage({ params }: { params: { id: string } }) {
+  const bookList = await fetchBookList(params.id);
 
   return (
     <div className={commonStyles.container}>
-      <h1 className={commonStyles.title}>{book.results.list_name} Books</h1>
-      <ul className={styles.list}>
-        {book.results.books.map((book: IBook, i) => (
-          <li key={i} className={styles.item}>
-            <img src={book.book_image} alt={book.title} />
-            <div className={styles.textBox}>
-              <div>
-                <span className={styles.title}>{book.title}</span>
-                <span className={styles.author}>{book.author}</span>
-              </div>
-              <Link href={book.amazon_product_url} className={styles.btn}>
-                <span>Buy Now &rarr;</span>
-              </Link>
-            </div>
-          </li>
+      <h1 className={commonStyles.title}>{bookList.results.list_name} Books</h1>
+      <ul className={BookStyles.list}>
+        {bookList.results.books.map((book, index) => (
+          <BookItem key={index} book={book} />
         ))}
       </ul>
     </div>
   );
-};
-
-export default ListPage;
+}

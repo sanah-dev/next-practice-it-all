@@ -1,8 +1,8 @@
-import { API_BEST_SELLER, API_BOOK_INFO } from '../../utils/api';
-import commonStyles from '../../styles/common.module.scss';
-import styles from '../../styles/home.module.scss';
+import { API_BEST_SELLER, API_BOOK_INFO } from '@/utils/api';
+import CommonStyles from '@/styles/Common.module.scss';
+import HomeStyles from './Home.module.scss';
 import Link from 'next/link';
-import { IBook } from '../list/[id]/page';
+import { IBook } from '@/components/BookItem';
 
 // * 인터페이스 정의
 interface ICategory {
@@ -12,8 +12,10 @@ interface ICategory {
 interface IBestSellers {
   results: ICategory[];
 }
-interface IBookApiResponse {
+interface IBookItem {
   results: {
+    list_name?: string;
+    list_name_encoded?: string;
     books: IBook[];
   };
 }
@@ -35,7 +37,7 @@ async function getBestSellers(): Promise<IBestSellers> {
 // * API 호출: 카테고리들의 책 정보 가져오기
 async function fetchBooksForCategory(categoryId: string): Promise<IBook[]> {
   const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
-  const json: IBookApiResponse = await response.json();
+  const json: IBookItem = await response.json();
   return json.results.books;
 }
 
@@ -43,7 +45,7 @@ async function fetchBooksForCategory(categoryId: string): Promise<IBook[]> {
 export default async function HomePage() {
   const categories: IBestSellers = await getBestSellers();
 
-  // * 모든 카테고리의 0번째 책 정보 가져오기
+  // * 카테고리들의 0번째 책 정보 가져오기
   const categoryBooks = await Promise.all(
     categories.results.map(async (category) => {
       const books = await fetchBooksForCategory(category.list_name_encoded);
@@ -56,16 +58,16 @@ export default async function HomePage() {
   );
 
   return (
-    <div className={commonStyles.container}>
-      <h1 className={commonStyles.title}>
+    <div className={CommonStyles.container}>
+      <h1 className={CommonStyles.title}>
         The New York Times Best Seller Explorer
       </h1>
 
       <p>Book Category</p>
 
-      <ul className={styles.list}>
+      <ul className={HomeStyles.list}>
         {categoryBooks.map((category, index) => (
-          <li key={index} className={styles.item}>
+          <li key={index} className={HomeStyles.item}>
             <Link href={`/list/${category.list_name_encoded}`}>
               {category.display_name} &rarr;
               {category.image ? (

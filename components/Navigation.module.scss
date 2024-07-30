@@ -1,4 +1,4 @@
-@import './_variable.scss';
+@use '@/styles/variable' as *;
 
 .nav {
   z-index: 10;
