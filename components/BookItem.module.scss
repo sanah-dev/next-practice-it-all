@@ -1,5 +1,4 @@
-@use '@/styles/variable' as *;
-@use 'sass:color' as colorfunc;
+@use '@/styles/_variable_color' as *;
 
 .list {
   display: grid;

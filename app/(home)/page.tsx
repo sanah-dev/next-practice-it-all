@@ -1,5 +1,4 @@
 import { API_BEST_SELLER, API_BOOK_INFO } from '@/utils/api';
-import CommonStyles from '@/styles/Common.module.scss';
 import HomeStyles from './Home.module.scss';
 import Link from 'next/link';
 import { IBook } from '@/components/BookItem';
@@ -58,10 +57,8 @@ export default async function HomePage() {
   );
 
   return (
-    <div className={CommonStyles.container}>
-      <h1 className={CommonStyles.title}>
-        The New York Times Best Seller Explorer
-      </h1>
+    <div className={'container'}>
+      <h1 className={'title'}>The New York Times Best Seller Explorer</h1>
 
       <p>Book Category</p>
 

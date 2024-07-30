@@ -1,5 +1,4 @@
 import { API_BOOK_INFO } from '@/utils/api';
-import commonStyles from '@/styles/Common.module.scss';
 import { Metadata } from 'next';
 import BookItem, { IBook } from '@/components/BookItem';
 import BookStyles from '@/components/BookItem.module.scss';
@@ -38,8 +37,8 @@ export default async function ListPage({ params }: { params: { id: string } }) {
   const bookList = await fetchBookList(params.id);
 
   return (
-    <div className={commonStyles.container}>
-      <h1 className={commonStyles.title}>{bookList.results.list_name} Books</h1>
+    <div className={'container'}>
+      <h1 className={'title'}>{bookList.results.list_name} Books</h1>
       <ul className={BookStyles.list}>
         {bookList.results.books.map((book, index) => (
           <BookItem key={index} book={book} />

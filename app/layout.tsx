@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import '@/styles/global.css';
-import styles from '@/styles/common.module.scss';
+import '@/styles/globals.scss';
 import Navigation from '@/components/Navigation';
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navigation />
-        <section className={styles.contents}>{children}</section>
+        <section className='contents'>{children}</section>
       </body>
     </html>
   );
