@@ -1,7 +1,7 @@
 import styles from './BookItem.module.scss';
 
 // * 인터페이스 정의
-export interface IBook {
+export interface IBookItemProps {
   title: string;
   author: string;
   book_image: string;
@@ -9,7 +9,7 @@ export interface IBook {
 }
 
 // * BookItem 컴포넌트 정의
-const BookItem = ({ book }: { book: IBook }) => (
+const BookItem = ({ book }: { book: IBookItemProps }) => (
   <li className={styles.item}>
     <img src={book.book_image} alt={book.title} className={styles.bookImage} />
     <div className={styles.textBox}>

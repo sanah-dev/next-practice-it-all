@@ -1,7 +1,7 @@
 import { API_BEST_SELLER, API_BOOK_INFO } from '@/utils/api';
 import HomeStyles from './Home.module.scss';
-import Link from 'next/link';
-import { IBook } from '@/components/BookItem';
+import { IBookItemProps } from '@/components/BookItem';
+import CategoryItem from '@/components/CategoryItem';
 
 // * 인터페이스 정의
 interface ICategory {
@@ -15,7 +15,7 @@ interface IBookItem {
   results: {
     list_name?: string;
     list_name_encoded?: string;
-    books: IBook[];
+    books: IBookItemProps[];
   };
 }
 
@@ -34,7 +34,9 @@ async function getBestSellers(): Promise<IBestSellers> {
 }
 
 // * API 호출: 카테고리들의 책 정보 가져오기
-async function fetchBooksForCategory(categoryId: string): Promise<IBook[]> {
+async function fetchBooksForCategory(
+  categoryId: string
+): Promise<IBookItemProps[]> {
   const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
   const json: IBookItem = await response.json();
   return json.results.books;
@@ -64,19 +66,7 @@ export default async function HomePage() {
 
       <ul className={HomeStyles.list}>
         {categoryBooks.map((category, index) => (
-          <li key={index} className={HomeStyles.item}>
-            <Link href={`/list/${category.list_name_encoded}`}>
-              {category.display_name} &rarr;
-              {category.image ? (
-                <img
-                  src={category.image}
-                  alt={`${category.display_name} book`}
-                />
-              ) : (
-                <p>No image available</p>
-              )}
-            </Link>
-          </li>
+          <CategoryItem key={index} category={category} />
         ))}
       </ul>
     </div>
