@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { API_BOOK_INFO } from '../../../utils/api';
-import styles from '../../../styles/book.module.css';
-import commonStyles from '../../../styles/common.module.css';
+import styles from '../../../styles/list.module.scss';
+import commonStyles from '../../../styles/common.module.scss';
 
 interface IList {
   results: {

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import commonStyles from '../styles/common.module.css';
+import commonStyles from '../styles/common.module.scss';
 
 export const metadata: Metadata = {
   title: 'Not found',

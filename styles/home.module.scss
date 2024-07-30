@@ -1,0 +1,23 @@
+@use './variable' as *;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.item {
+  border: 1px solid $grey;
+  box-shadow: 0px 6px 8px 0px $shdow-black;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 2px 6px 0px $shdow-black;
+    transform: translateY(4px);
+  }
+
+  a {
+    display: inline-block;
+    padding: 12px;
+  }
+}

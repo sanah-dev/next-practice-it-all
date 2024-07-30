@@ -1,3 +1,6 @@
+:root {
+  --light-grey: #eeeeee;
+}
 html,
 body,
 div,
@@ -112,8 +115,10 @@ section {
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(221, 234, 234);
-  color: darkslategrey;
+  background-color: var(--light-grey);
+  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-weight: 400;
+  color: inherit;
   line-height: 1;
 }
 menu,

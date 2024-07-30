@@ -1,4 +1,4 @@
-import commonStyles from '../../styles/common.module.css';
+import commonStyles from '../../styles/common.module.scss';
 
 export const metadata = {
   title: 'About',
