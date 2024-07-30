@@ -1,7 +1,11 @@
 @use '@/styles/_variable_color' as *;
+@use '@/styles/_variable_font' as font;
 
 .list {
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  justify-content: center;
+  gap: 40px;
 }

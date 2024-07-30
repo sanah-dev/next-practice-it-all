@@ -1,15 +1,10 @@
 import { API_BOOK_INFO } from '@/utils/api';
 import { Metadata } from 'next';
-import BookItem, { IBook } from '@/components/BookItem';
+import BookItem from '@/components/BookItem';
 import BookStyles from '@/components/BookItem.module.scss';
-
-// * 인터페이스 정의
-export interface IBookList {
-  results: {
-    list_name: string;
-    books: IBook[];
-  };
-}
+import { IconArrowLeft } from '@/components/Icon';
+import { IBookList } from '@/types';
+import PrevButton from '@/components/PrevButton';
 
 // * 메타데이터 생성 함수
 export async function generateMetadata({
@@ -35,15 +30,17 @@ async function fetchBookList(id: string): Promise<IBookList> {
 // * ListPage 컴포넌트 정의
 export default async function ListPage({ params }: { params: { id: string } }) {
   const bookList = await fetchBookList(params.id);
-
   return (
-    <div className={'container'}>
-      <h1 className={'title'}>{bookList.results.list_name} Books</h1>
+    <>
+      <h1 className={'title'}>
+        <PrevButton />
+        <span>{bookList.results.list_name} Books</span>
+      </h1>
       <ul className={BookStyles.list}>
         {bookList.results.books.map((book, index) => (
           <BookItem key={index} book={book} />
         ))}
       </ul>
-    </div>
+    </>
   );
 }

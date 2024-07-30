@@ -1,25 +1,27 @@
+import { IBookItemProps } from '@/types';
 import styles from './BookItem.module.scss';
+import { IconShop } from './Icon';
+import FavoriteButton from './FavoriteButton';
 
-// * 인터페이스 정의
-export interface IBookItemProps {
-  title: string;
-  author: string;
-  book_image: string;
-  amazon_product_url: string;
-}
-
-// * BookItem 컴포넌트 정의
 const BookItem = ({ book }: { book: IBookItemProps }) => (
   <li className={styles.item}>
-    <img src={book.book_image} alt={book.title} className={styles.bookImage} />
+    <div className={styles.imgBox}>
+      <img
+        src={book.book_image}
+        alt={book.title}
+        className={styles.bookImage}
+      />
+    </div>
     <div className={styles.textBox}>
       <div>
-        <span className={styles.title}>{book.title}</span>
-        <span className={styles.author}>{book.author}</span>
+        <span className={styles.bookName}>{book.title}</span>
+        <span className={styles.bookAuthor}>{book.author}</span>
       </div>
-      <a href={book.amazon_product_url} className={styles.btn}>
-        <span>Buy Now &rarr;</span>
+      <a href={book.amazon_product_url} className={styles.btnBuy}>
+        <IconShop />
+        <span>Buy Now</span>
       </a>
+      <FavoriteButton />
     </div>
   </li>
 );

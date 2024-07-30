@@ -1,0 +1,8 @@
+@use '@/styles/_variable_color' as *;
+@use '@/styles/_variable_font' as font;
+
+.cover {
+  width: 100%;
+  height: 200px;
+  border: 1px solid red;
+}

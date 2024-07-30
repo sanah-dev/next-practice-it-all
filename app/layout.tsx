@@ -13,19 +13,11 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <head>
-        <link
-          href='https://fonts.googleapis.com/css2?family=Oswald&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css'
-          rel='stylesheet'
-        />
-      </head>
       <body>
-        <Navigation />
-        <section className='contents'>{children}</section>
+        <section className='wrap'>
+          <Navigation />
+          <div className='contents'>{children}</div>
+        </section>
       </body>
     </html>
   );

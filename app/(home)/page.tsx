@@ -1,23 +1,8 @@
 import { API_BEST_SELLER, API_BOOK_INFO } from '@/utils/api';
 import HomeStyles from './Home.module.scss';
-import { IBookItemProps } from '@/components/BookItem';
 import CategoryItem from '@/components/CategoryItem';
-
-// * 인터페이스 정의
-interface ICategory {
-  display_name: string;
-  list_name_encoded: string;
-}
-interface IBestSellers {
-  results: ICategory[];
-}
-interface IBookItem {
-  results: {
-    list_name?: string;
-    list_name_encoded?: string;
-    books: IBookItemProps[];
-  };
-}
+import { IBestSellers, IBookItem, IBookItemProps } from '@/types';
+import Cover from '@/components/Cover';
 
 // * 메타데이터 설정
 export const metadata = {
@@ -39,6 +24,7 @@ async function fetchBooksForCategory(
 ): Promise<IBookItemProps[]> {
   const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
   const json: IBookItem = await response.json();
+  console.log(JSON.stringify(json));
   return json.results.books;
 }
 
@@ -59,16 +45,15 @@ export default async function HomePage() {
   );
 
   return (
-    <div className={'container'}>
-      <h1 className={'title'}>The New York Times Best Seller Explorer</h1>
-
-      <p>Book Category</p>
+    <>
+      <Cover />
+      <p className={'title'}>Book Category</p>
 
       <ul className={HomeStyles.list}>
         {categoryBooks.map((category, index) => (
           <CategoryItem key={index} category={category} />
         ))}
       </ul>
-    </div>
+    </>
   );
 }
