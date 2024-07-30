@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 interface IList {
   results: {
     list_name: string;
-    books: [];
+    books: IBook[];
   };
 }
 
@@ -35,8 +35,9 @@ async function getBook(id: string): Promise<IList> {
   return json;
 }
 
-export default async function List({ params }: { params: { id: string } }) {
+const ListPage = async ({ params }: { params: { id: string } }) => {
   const book = await getBook(params.id);
+
   return (
     <div className={commonStyles.container}>
       <h1 className={commonStyles.title}>{book.results.list_name} Books</h1>
@@ -58,4 +59,6 @@ export default async function List({ params }: { params: { id: string } }) {
       </ul>
     </div>
   );
-}
+};
+
+export default ListPage;
