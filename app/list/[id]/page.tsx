@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { API_BOOK_INFO } from '../../../utils/api';
 import styles from '../../../styles/list.module.scss';
 import commonStyles from '../../../styles/common.module.scss';
+import { Metadata } from 'next';
 
 interface IList {
   results: {
@@ -17,21 +18,25 @@ interface IBook {
   amazon_product_url: string;
 }
 
-export async function generateMetadata({ params: { id } }) {
-  const book: IList = await getBook(id);
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const book = await getBook(params.id);
   return {
     title: book.results.list_name,
   };
 }
 
-async function getBook(id: string) {
+async function getBook(id: string): Promise<IList> {
   const response = await fetch(`${API_BOOK_INFO}${id}`);
   const json = await response.json();
   return json;
 }
 
-export default async function List({ params: { id } }) {
-  const book = await getBook(id);
+export default async function List({ params }: { params: { id: string } }) {
+  const book = await getBook(params.id);
   return (
     <div className={commonStyles.container}>
       <h1 className={commonStyles.title}>{book.results.list_name} Books</h1>
