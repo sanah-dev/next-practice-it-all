@@ -11,7 +11,7 @@ interface IList {
   };
 }
 
-interface IBook {
+export interface IBook {
   title: string;
   author: string;
   book_image: string;
