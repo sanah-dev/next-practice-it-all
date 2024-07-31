@@ -27,7 +27,7 @@ async function fetchBookList(id: string): Promise<IBookList> {
 }
 
 // * ListPage 컴포넌트 정의
-export default async function ListPage({ params }: { params: { id: string } }) {
+const ListPage = async ({ params }: { params: { id: string } }) => {
   const bookList = await fetchBookList(params.id);
   return (
     <>
@@ -42,4 +42,5 @@ export default async function ListPage({ params }: { params: { id: string } }) {
       </ul>
     </>
   );
-}
+};
+export default ListPage;

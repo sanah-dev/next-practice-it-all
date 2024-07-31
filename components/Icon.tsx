@@ -61,7 +61,7 @@ export function IconFav() {
     >
       <path
         clipRule='evenodd'
-        fill-rule='evenodd'
+        fillRule='evenodd'
         d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'
       ></path>
     </svg>
@@ -97,7 +97,7 @@ export function IconArrowLeft() {
     >
       <path
         clipRule='evenodd'
-        fill-rule='evenodd'
+        fillRule='evenodd'
         d='M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z'
       ></path>
     </svg>
