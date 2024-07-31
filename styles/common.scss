@@ -8,8 +8,9 @@
 .contents {
   margin-left: 240px;
   background-color: $white;
-  min-width: calc(100lvw - 240px);
-  min-height: 100lvh;
+  width: 100%;
+  max-width: calc(100vw - 240px);
+  min-height: 100vh;
   padding: 40px;
 }
 
@@ -67,9 +68,19 @@
   background-color: rgba($grey, 0.2);
   border-radius: 100%;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $white;
+    background-color: rgba($pink, 0.3);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
 
   &.active {
     color: $pink;
-    background-color: rgba($pink, 0.2);
+    background-color: rgba($pink, 0.3);
   }
 }

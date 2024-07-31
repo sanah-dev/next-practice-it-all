@@ -2,7 +2,6 @@ import { API_BOOK_INFO } from '@/utils/api';
 import { Metadata } from 'next';
 import BookItem from '@/components/BookItem';
 import BookStyles from '@/components/BookItem.module.scss';
-import { IconArrowLeft } from '@/components/Icon';
 import { IBookList } from '@/types';
 import PrevButton from '@/components/PrevButton';
 

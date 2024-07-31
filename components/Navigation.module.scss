@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   width: 240px;
-  height: 100lvh;
+  height: 100vh;
   padding: 20px;
   background-color: $light-grey;
   font-family: font.$font-set;
@@ -18,6 +18,11 @@
   padding: 20px 0;
   color: $black;
   font-family: 'Jost', sans-serif;
+
+  span {
+    color: rgba($black, 0.4);
+    font-size: 12px;
+  }
 
   & ~ span {
     display: inline-block;

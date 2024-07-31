@@ -2,7 +2,6 @@ import { API_BEST_SELLER, API_BOOK_INFO } from '@/utils/api';
 import HomeStyles from './Home.module.scss';
 import CategoryItem from '@/components/CategoryItem';
 import { IBestSellers, IBookItem, IBookItemProps } from '@/types';
-import Cover from '@/components/Cover';
 
 // * 메타데이터 설정
 export const metadata = {
@@ -61,7 +60,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Cover />
       <p className={'title'}>Book Category</p>
 
       <ul className={HomeStyles.list}>

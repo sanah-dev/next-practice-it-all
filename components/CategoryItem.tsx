@@ -17,7 +17,17 @@ const CategoryItem = ({ category }: { category: ICategoryItemProps }) => {
             {/* <div className={styles.emptyImg} /> */}
           </>
         ) : (
-          <div className={styles.emptyImgBox} />
+          <>
+            <div className={styles.bookImgBox}>
+              <img
+                src={
+                  'https://blog.kakaocdn.net/dn/bZMazR/btrT4qEKy1t/wNiOS3hKvmKCCCibNCqEpK/img.jpg'
+                }
+                alt={`${display_name} not image`}
+              />
+              {/* <img src={image} alt={`${display_name} book`} /> */}
+            </div>
+          </>
         )}
         <div className={styles.bookName}>{display_name}</div>
       </Link>

@@ -4,8 +4,13 @@
 .list {
   // display: grid;
   // grid-template-columns: repeat(4, 1fr);
-  display: flex;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // gap: 40px;
+
+  display: grid;
   flex-wrap: wrap;
-  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
   gap: 40px;
 }

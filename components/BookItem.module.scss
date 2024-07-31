@@ -5,7 +5,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 60px;
-  padding: 0 20px;
 }
 
 .item {
@@ -95,7 +94,6 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 8px;
-  // background-color: $black;
   border-radius: 20em;
   font-size: 12px;
   color: $white;
