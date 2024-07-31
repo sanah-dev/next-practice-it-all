@@ -27,7 +27,7 @@ async function fetchBookList(id: string): Promise<IBookList> {
 }
 
 // * ListPage 컴포넌트 정의
-export default async function ListPage({ params }: { params: { id: string } }) {
+async function ListPage({ params }: { params: { id: string } }) {
   const bookList = await fetchBookList(params.id);
   return (
     <>
@@ -43,3 +43,16 @@ export default async function ListPage({ params }: { params: { id: string } }) {
     </>
   );
 }
+
+// ! 잘 배포되었는데 갑자기 안되는 이유가 대체 뭘까? vercel에서 아래와 같은 오류가 발생한다.
+// !
+// ! Failed to compile.
+// ! app/list/[id]/page.tsx
+// ! Type error: Page "app/list/[id]/page.tsx" has an invalid "default" export:
+// !   Type "{ name: string; }" is not valid.
+// ! Error: Command "npm run build" exited with 1
+// !
+// ! 이해가 안되었음 vercel에 배포하는데 'Next.js의 페이지 컴포넌트는 async 함수로 정의될 수 없음' 이 무슨말이지
+// ! GPT의 도움을 요청해보자
+
+export default ListPage;
