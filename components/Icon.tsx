@@ -25,8 +25,8 @@ export function IconHome() {
       height={12}
     >
       <path
-        clip-rule='evenodd'
-        fill-rule='evenodd'
+        clipRule='evenodd'
+        fillRule='evenodd'
         d='M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z'
       ></path>
     </svg>
@@ -60,7 +60,7 @@ export function IconFav() {
       height={20}
     >
       <path
-        clip-rule='evenodd'
+        clipRule='evenodd'
         fill-rule='evenodd'
         d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'
       ></path>
@@ -96,7 +96,7 @@ export function IconArrowLeft() {
       height={24}
     >
       <path
-        clip-rule='evenodd'
+        clipRule='evenodd'
         fill-rule='evenodd'
         d='M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z'
       ></path>
