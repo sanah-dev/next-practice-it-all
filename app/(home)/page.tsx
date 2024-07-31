@@ -22,10 +22,25 @@ async function getBestSellers(): Promise<IBestSellers> {
 async function fetchBooksForCategory(
   categoryId: string
 ): Promise<IBookItemProps[]> {
-  const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
-  const json: IBookItem = await response.json();
-  console.log(JSON.stringify(json));
-  return json.results.books;
+  try {
+    const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
+    const json: IBookItem = await response.json();
+
+    // 성공적인지 확인(만약 false라면)
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    // API 응답 구조 확인 및 데이터 반환
+    if (json && json.results && Array.isArray(json.results.books)) {
+      return json.results.books;
+    } else {
+      throw new Error('Error: results.books 데이터가 없음');
+    }
+  } catch (error) {
+    console.error('Error: fetching books => ', error);
+    return []; // 또는 적절한 오류 처리를 추가
+  }
 }
 
 // * HomePage 컴포넌트
