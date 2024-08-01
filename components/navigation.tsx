@@ -12,8 +12,6 @@ export default function Navigation() {
     <nav className={styles.nav}>
       <h1 className={styles.title}>
         <IconLogo />
-        {/* The New York Times */}
-        {/* <br /> */}
         <span>Best Seller Explorer</span>
       </h1>
       <span>menu</span>
