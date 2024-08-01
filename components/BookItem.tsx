@@ -6,11 +6,21 @@ import FavoriteButton from './FavoriteButton';
 const BookItem = ({ book }: { book: IBookItemProps }) => (
   <li className={styles.item}>
     <div className={styles.imgBox}>
-      <img
-        src={book.book_image}
-        alt={book.title}
-        className={styles.bookImage}
-      />
+      {book.book_image ? (
+        <img
+          src={book.book_image}
+          alt={book.title}
+          className={styles.bookImage}
+        />
+      ) : (
+        <img
+          src={
+            'https://blog.kakaocdn.net/dn/bZMazR/btrT4qEKy1t/wNiOS3hKvmKCCCibNCqEpK/img.jpg'
+          }
+          alt={`${book.title} not image`}
+          className={styles.bookImage}
+        />
+      )}
     </div>
     <div className={styles.textBox}>
       <div>

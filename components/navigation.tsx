@@ -6,7 +6,7 @@ import styles from './Navigation.module.scss';
 import { IconAbout, IconFav, IconHome, IconLogo } from './Icon';
 
 // * Navigation 컴포넌트 정의
-const Navigation = () => {
+export default function Navigation() {
   const path = usePathname();
   return (
     <nav className={styles.nav}>
@@ -57,6 +57,4 @@ const Navigation = () => {
       </ul>
     </nav>
   );
-};
-
-export default Navigation;
+}
