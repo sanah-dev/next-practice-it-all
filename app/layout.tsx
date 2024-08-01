@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: '%s | Book Explorer',
     default: 'The New York Times Best Seller Explorer',
   },
-  description: 'The best movies on the best framework',
+  description: 'The New York Times Best Seller Explorer',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

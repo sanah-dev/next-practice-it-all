@@ -23,18 +23,19 @@ async function fetchBooksForCategory(
 ): Promise<IBookItemProps[]> {
   try {
     const response = await fetch(`${API_BOOK_INFO}${categoryId}`);
-    const json: IBookItem = await response.json();
 
     // 성공적인지 확인(만약 false라면)
     if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
+      throw new Error(`Response Error: ${response.status}`);
     }
+
+    const json: IBookItem = await response.json();
 
     // API 응답 구조 확인 및 데이터 반환
     if (json && json.results && Array.isArray(json.results.books)) {
       return json.results.books;
     } else {
-      throw new Error('Error: results.books 데이터가 없음');
+      throw new Error('results.books 데이터가 없음');
     }
   } catch (error) {
     console.error('Error: fetching books => ', error);
@@ -46,7 +47,7 @@ async function fetchBooksForCategory(
 export default async function HomePage() {
   const categories: IBestSellers = await getBestSellers();
 
-  // * 카테고리들의 0번째 책 정보 가져오기
+  // 카테고리들의 책 정보 가져오기
   const categoryBooks = await Promise.all(
     categories.results.map(async (category) => {
       const books = await fetchBooksForCategory(category.list_name_encoded);
@@ -61,10 +62,9 @@ export default async function HomePage() {
   return (
     <>
       <p className={'title'}>Book Category</p>
-
       <ul className={HomeStyles.list}>
-        {categoryBooks.map((category, index) => (
-          <CategoryItem key={index} category={category} />
+        {categoryBooks.map((category) => (
+          <CategoryItem key={category.list_name_encoded} category={category} />
         ))}
       </ul>
     </>

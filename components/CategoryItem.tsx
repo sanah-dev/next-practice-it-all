@@ -14,7 +14,6 @@ const CategoryItem = ({ category }: { category: ICategoryItemProps }) => {
             <div className={styles.bookImgBox}>
               <img src={image} alt={`${display_name} book`} />
             </div>
-            {/* <div className={styles.emptyImg} /> */}
           </>
         ) : (
           <>
@@ -25,7 +24,6 @@ const CategoryItem = ({ category }: { category: ICategoryItemProps }) => {
                 }
                 alt={`${display_name} not image`}
               />
-              {/* <img src={image} alt={`${display_name} book`} /> */}
             </div>
           </>
         )}
