@@ -4,8 +4,8 @@ import Navigation from '@/components/Navigation';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Next Movies',
-    default: 'Next Movies',
+    template: '%s | Book Explorer',
+    default: 'The New York Times Best Seller Explorer',
   },
   description: 'The best movies on the best framework',
 };

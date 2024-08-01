@@ -44,11 +44,14 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link href='/my' className={path === '/my' ? styles.active : ''}>
+          <Link
+            href='/favorite'
+            className={path === '/favorite' ? styles.active : ''}
+          >
             <i className={styles.icon}>
               <IconFav />
             </i>
-            <span>my</span>
+            <span>Favorite</span>
           </Link>
         </li>
       </ul>
